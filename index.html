@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>deiadorebel — the wave becomes sound</title>
+  <meta name="description" content="Timeless novellas. Eight poems each. Each poem also a song. The compositions existed before the technology to realise them — now the technology has arrived." />
+  <meta property="og:title" content="deiadorebel — the wave becomes sound" />
+  <meta property="og:description" content="Music as transmission. Sound as the living world made audible." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://deiadorebel.com" />
+  <meta property="og:image" content="https://deiadorebel.com/deiadorebel_banner_sm.jpeg" />
+  <link rel="icon" href="/deiadorebel_favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink:        #ebe7dc;
+      --paper:      #0c1516;
+      --card:       #0e171a;
+      --card-lt:    #131f23;
+      --gold:       #ecb02f;
+
+      /* ── spectrum variables ── */
+      --node-0:     #0c1516;
+      --node-1:     #6b2d1a;
+      --node-2:     #9d4418;
+      --node-3:     #c49a3c;
+      --node-4:     #7a9e2a;
+      --node-5:     #2d6a1f;
+      --node-6:     #0f6e56;
+      --node-7:     #1a6b9e;
+      --node-8:     #3c3489;
+      --node-9:     #2d1a4e;
+
+      --accent:     #0f6e56;  /* node-6 · transmission · dodecahedron · deep water */
+      --accent-lt:  #1a9e7a;
+
+      --muted:      #cbc6ba;
+      --line:       rgba(240,237,230,.1);
+      --r:          8px;
+      --serif:      'Exo 2', system-ui, sans-serif;
+      --sans:       'DM Sans', system-ui, sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --ink:        #f4f2ec;
+      --paper:      #010003;
+      --card:       #151515;
+      --card-lt:    #20211e;
+      --gold:       #e6c47d;
+      --accent:     #0f6e56;
+      --accent-lt:  #1a9e7a;
+      --muted:      #b5ad9e;
+      --line:       rgba(240,237,230,.1);
+    }
+
+    [data-theme="dark"] .nav          { background: #010003; }
+    [data-theme="dark"] .card         { background: #151515; }
+    [data-theme="dark"] .song-tile    { background: #151515; }
+    [data-theme="dark"] .notify-card  { background: #151515; }
+
+    [data-theme="light"] {
+      --ink:        #1a1814;
+      --paper:      #f4f2ec;
+      --card:       #fffff2;
+      --card-lt:    #e8e2d6;
+      --muted:      #5a554e;
+      --gold:       #8B5E2A;
+      --accent:     #0f6e56;
+      --accent-lt:  #1a9e7a;
+      --line:       rgba(55,51,42,.2);
+    }
+
+    [data-theme="light"] .nav         { background: #f4f2ec; }
+    [data-theme="light"] .card        { background: #fffff2; }
+    [data-theme="light"] .song-tile   { background: #fffff2; }
+    [data-theme="light"] .notify-card { background: #fffff2; }
+    [data-theme="light"] .brand       { color: #1a1814; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* ─── nav ─── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 2rem;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -.02em;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .navlinks { display: flex; align-items: center; gap: 1.6rem; }
+
+    .navlinks a {
+      font-size: .85rem;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: .02em;
+      transition: color .2s;
+    }
+
+    .navlinks a:hover { color: var(--accent); }
+
+    .navlinks .pill {
+      background: var(--accent);
+      color: var(--paper);
+      padding: .42rem 1rem;
+      border-radius: 100px;
+      font-weight: 500;
+      transition: background .2s;
+    }
+
+    .navlinks .pill:hover {
+      background: var(--accent-lt);
+      outline: 1.5px solid var(--gold);
+      outline-offset: 1px;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1.5px solid var(--line);
+      border-radius: 100px;
+      cursor: pointer;
+      padding: .35rem .6rem;
+      font-size: 1rem;
+      line-height: 1;
+      color: var(--muted);
+      transition: border-color .2s, color .2s;
+    }
+
+    .theme-toggle:hover { border-color: var(--gold); color: var(--ink); }
+
+    /* ─── page ─── */
+    .page { max-width: 900px; margin: 0 auto; padding: 0 1.5rem 6rem; }
+
+    /* ─── hero ─── */
+    .hero {
+      padding: 7rem 0 5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kicker {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: .88rem;
+      font-weight: 300;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      letter-spacing: .06em;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.12;
+      letter-spacing: -.03em;
+      font-weight: 700;
+      color: var(--ink);
+      max-width: 700px;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--accent);
+    }
+
+    .subhead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 1.75;
+      margin-bottom: 1.4rem;
+      font-weight: 300;
+    }
+
+    .subhead strong { color: var(--ink); font-weight: 500; }
+
+    .hero-note {
+      font-size: .82rem;
+      color: var(--muted);
+      letter-spacing: .03em;
+      margin-top: 2rem;
+      font-style: italic;
+    }
+
+    .ctaRow { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+
+    /* ─── buttons ─── */
+    .btn {
+      display: inline-flex; align-items: center;
+      padding: .65rem 1.4rem;
+      border-radius: var(--r);
+      font-family: var(--sans);
+      font-size: .88rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all .2s;
+      border: 1.5px solid transparent;
+    }
+
+    .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn.primary:hover { background: var(--accent-lt); border-color: var(--accent-lt); }
+    .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ─── sections ─── */
+    section { margin-top: 5rem; }
+
+    .section-label {
+      font-family: var(--serif);
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.6rem;
+    }
+
+    /* ─── what is this ─── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 2.2rem 2.4rem;
+    }
+
+    .card h2 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: .97rem;
+      margin-bottom: .8rem;
+    }
+
+    .card p:last-child { margin-bottom: 0; }
+
+    /* ─── song tiles ─── */
+    .songs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .songs-grid .song-tile.album {
+      grid-column: 1 / -1;  /* full width featured tile */
+    }
+
+    @media (max-width: 560px) { .songs-grid { grid-template-columns: 1fr; } }
+
+    .song-tile {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 1.8rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+      transition: border-color .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .song-tile::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      opacity: .5;
+      transition: opacity .25s;
+    }
+
+    .song-tile:hover { border-color: var(--accent); }
+    .song-tile:hover::before { opacity: 1; }
+
+    .song-tile .novella {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .song-tile h3 {
+      font-family: var(--serif);
+      font-size: .97rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.35;
+      letter-spacing: -.01em;
+      flex: 1;
+    }
+
+    .song-tile .song-count {
+      font-size: .78rem;
+      color: var(--accent);
+      font-style: italic;
+      letter-spacing: .02em;
+    }
+
+    .song-tile.coming {
+      opacity: .7;
+      border-style: dashed;
+    }
+
+    .song-tile .status {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ─── album tile — different treatment ─── */
+    .song-tile.album::before { background: var(--gold); }
+    .song-tile.album:hover { border-color: var(--gold); }
+    .song-tile.album .song-count { color: var(--gold); }
+
+    /* ─── notify ─── */
+    .notify-card {
+      background: var(--card);
+      border: 1px solid var(--accent);
+      border-radius: var(--r);
+      padding: 2.2rem 2.4rem;
+    }
+
+    .notify-card h2 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      margin-bottom: .8rem;
+      color: var(--ink);
+    }
+
+    .notify-card p {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: .97rem;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ─── footer ─── */
+    .footer {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: .6rem;
+      font-size: .82rem;
+      color: var(--muted);
+    }
+
+    .footer a { color: var(--gold); text-decoration: none; }
+    .footer a:hover { opacity: .75; }
+
+    .muted { color: var(--muted); }
+
+    /* ─── animations ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero .kicker    { animation: fadeUp .5s ease both; animation-delay: .05s; }
+    .hero h1         { animation: fadeUp .5s ease both; animation-delay: .12s; }
+    .hero .subhead   { animation: fadeUp .5s ease both; animation-delay: .2s; }
+    .hero .ctaRow    { animation: fadeUp .5s ease both; animation-delay: .28s; }
+    .hero .hero-note { animation: fadeUp .5s ease both; animation-delay: .34s; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="/">deiadora<span>rebel</span></a>
+    <nav class="navlinks">
+      <a href="#about">about</a>
+      <a href="#music">music</a>
+      <a href="mailto:hello@deiadorebel.com?subject=collaboration · deiadorebel" class="pill">email the artist</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="toggle dark mode">🌙</button>
+    </nav>
+  </header>
+
+  <main class="page">
+
+    <!-- ─── hero ─── -->
+    <section class="hero">
+      <p class="kicker">deiadorebel · music as transmission · sound as the living world made audible</p>
+      <h1>The wave becomes <em>sound.</em></h1>
+      <p class="subhead">
+        Timeless novellas. Eight poems each. <strong>Each poem also a song.</strong>
+        The compositions existed before the technology to realise them —
+        now the technology has arrived.
+      </p>
+      <p class="subhead">
+        AI-assisted music for people who feel in metaphor and think in systems.
+      </p>
+      <div class="ctaRow">
+        <a class="btn primary" href="mailto:hello@deiadorebel.com?subject=collaboration · deiadorebel">email the artist</a>
+        <a class="btn ghost" href="#music">explore the music</a>
+      </div>
+      <p class="hero-note">the tech caught up · the transmission begins</p>
+    </section>
+
+    <!-- ─── about ─── -->
+    <section id="about">
+      <p class="section-label">what this is</p>
+      <div class="card">
+        <h2>Music is how the field transmits what words can only approximate.</h2>
+        <p>
+          Every poem in the Book of Shadows series was always also a song.
+          The compositions have existed for years — in notation, in memory,
+          in the body — waiting for the technology to catch up with the vision.
+          It has. The transmission begins now.
+        </p>
+        <p>
+          Deiadorebel is the musical expression of the <a href="https://deiadora.com" style="color:var(--accent);text-decoration:none;">Deiadora ecosystem</a> —
+          the moment the wave function is observed and everything researched
+          collapses into sound. Each transmission is precise in the quantum sense:
+          a signal that carries the structure of the system that generated it,
+          tunnelling through whatever barriers classical mechanics says it cannot cross.
+        </p>
+        <p>
+          The songs on this site correspond to the poems in
+          <em>The Book of Shadows series</em> and reflect the principles of
+          <em>Quantum Currency: Field Research on Human Coherence</em>.
+          Each one is a portal into the same architecture — just through
+          a different instrument.
+        </p>
+      </div>
+    </section>
+
+    <!-- ─── music ─── -->
+    <section id="music">
+      <p class="section-label">the book of shadows series · songs</p>
+      <div class="songs-grid">
+
+        <!-- featured album — full width -->
+        <div class="song-tile album">
+          <p class="novella">novella ii · 2017 · the first release</p>
+          <h3>God/Goddess Algorithm and the Union of the Mirrored Self</h3>
+          <p class="song-count">8 songs · original compositions · AI-assisted realisation</p>
+          <p class="status">coming soon · email the artist ↑</p>
+        </div>
+
+        <!-- remaining novellas — 2x2 -->
+        <div class="song-tile coming">
+          <p class="novella">novella i · 2016</p>
+          <h3>Light Travel and the Timelessness of Now</h3>
+          <p class="song-count">8 songs</p>
+          <p class="status">coming soon</p>
+        </div>
+
+        <div class="song-tile coming">
+          <p class="novella">novella iii · 2018</p>
+          <h3>Quantum Divinity and the Separation of Two Worlds</h3>
+          <p class="song-count">8 songs</p>
+          <p class="status">coming soon</p>
+        </div>
+
+        <div class="song-tile coming">
+          <p class="novella">novella iv · 2019</p>
+          <h3>The Other Me and the Life/Death of the Self</h3>
+          <p class="song-count">8 songs</p>
+          <p class="status">coming soon</p>
+        </div>
+
+        <div class="song-tile coming">
+          <p class="novella">novella v · in progress</p>
+          <h3>Rebel Evolve and the Return Home</h3>
+          <p class="song-count">8 songs</p>
+          <p class="status">coming soon</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── connect ─── -->
+    <section id="notify">
+      <div class="notify-card">
+        <h2>The transmission finds its receivers.</h2>
+        <p>
+          If you're a producer, filmmaker, or festival programmer and something here resonates — email the artist. Collaboration is how the signal propagates.
+        </p>
+        <a class="btn primary" href="mailto:hello@deiadorebel.com?subject=collaboration · deiadorebel">email the artist →</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>deiadorebel · transmission · dodecahedron</p>
+      <p class="muted">© <span id="year"></span> · part of the <a href="https://deiadora.com">deiadora ecosystem</a> 🌿</p>
+    </footer>
+
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const toggle = document.getElementById("themeToggle");
+    const saved = localStorage.getItem("theme-deiadorebel") || "dark";
+    document.documentElement.setAttribute("data-theme", saved);
+    toggle.textContent = saved === "dark" ? "🌙" : "☀️";
+
+    toggle.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme-deiadorebel", next);
+      toggle.textContent = next === "dark" ? "🌙" : "☀️";
+    });
+  </script>
+</body>
+</html>
