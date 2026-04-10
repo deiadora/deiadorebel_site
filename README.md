@@ -10,13 +10,13 @@
 
 Deiadorebel is the musical expression of the Deiadora ecosystem — the moment the wave function is observed and everything researched collapses into sound. Each transmission is precise in the quantum sense: a signal that carries the structure of the system that generated it, tunnelling through whatever barriers classical mechanics says it cannot cross.
 
-Every poem in the Book of Shadows series was always also a song. The compositions have existed for years — in notation, in memory, in the body — waiting for the technology to catch up with the vision. It has. The transmission begins now.
+Every poem in the Field Notess series was always also a song. The compositions have existed for years — in notation, in memory, in the body — waiting for the technology to catch up with the vision. It has. The transmission begins now.
 
 ---
 
 ## the music
 
-Each novella in The Book of Shadows series contains eight poems. Each poem is also a song. The songs correspond to the poems and reflect the principles of *Quantum Currency: Field Research on Human Coherence* — the same architecture arriving through a different instrument.
+Each novella in the Field Notes series contains eight poems. Each poem is also a song. The songs correspond to the poems and reflect the principles of *Quantum Currency: Field Research on Human Coherence* — the same architecture arriving through a different instrument.
 
 | novella | year | title | status |
 |---------|------|-------|--------|
