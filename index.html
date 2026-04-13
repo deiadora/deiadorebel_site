@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>deiadorebel — the wave becomes sound</title>
-  <meta name="description" content="Five novellas. Eight songs each. The living world made audible. The compositions existed before the technology to realise them — now the technology has arrived." />
+  <meta name="description" content="Five albums in composition. Eight songs each. The living world made audible. The compositions existed before the technology to realise them — now the technology has arrived." />
   <meta property="og:title" content="deiadorebel — the wave becomes sound" />
   <meta property="og:description" content="Music as transmission. Sound as the living world made audible." />
   <meta property="og:type" content="website" />
@@ -81,7 +81,7 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
-    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; transition: background .25s, color .25s; }
 
     /* ─── nav ─── */
     .nav {
@@ -235,7 +235,7 @@
       margin-bottom: 1.6rem;
     }
 
-    /* ─── what is this ─── */
+    /* ─── cards ─── */
     .card {
       background: var(--card);
       border: 1px solid var(--line);
@@ -269,7 +269,7 @@
     }
 
     .songs-grid .song-tile.album {
-      grid-column: 1 / -1;  /* full width featured tile */
+      grid-column: 1 / -1;
     }
 
     @media (max-width: 560px) { .songs-grid { grid-template-columns: 1fr; } }
@@ -338,7 +338,7 @@
       color: var(--gold);
     }
 
-    /* ─── album tile — different treatment ─── */
+    /* ─── album tile ─── */
     .song-tile.album::before { background: var(--gold); }
     .song-tile.album:hover { border-color: var(--gold); }
     .song-tile.album .song-count { color: var(--gold); }
@@ -403,7 +403,7 @@
       <a href="#about">about</a>
       <a href="#music">music</a>
       <a href="mailto:hello@deiadorebel.com?subject=collaboration · deiadorebel" class="pill">email the artist</a>
-      <button class="theme-toggle" id="themeToggle" aria-label="toggle dark mode">🌙</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="toggle colour mode">🌙</button>
     </nav>
   </header>
 
@@ -414,13 +414,14 @@
       <p class="kicker">deiadorebel · music as transmission · sound as the living world made audible</p>
       <h1>The wave becomes <em>sound.</em></h1>
       <p class="subhead">
-        Five albums. Eight songs each.
+        Five albums in composition. Eight songs each.
         <strong>The living world made audible.</strong>
         The compositions existed before the technology to realise them —
         now the technology has arrived.
       </p>
       <p class="subhead">
         AI-assisted music for people who feel in metaphor and think in systems.
+        The first album is here. The rest are becoming.
       </p>
       <div class="ctaRow">
         <a class="btn primary" href="mailto:hello@deiadorebel.com?subject=collaboration · deiadorebel">email the artist</a>
@@ -429,7 +430,7 @@
       <p class="hero-note">the tech caught up · the transmission begins</p>
     </section>
 
-    <!-- ─── about ─── -->
+    <!-- ─── about ─── */
     <section id="about">
       <p class="section-label">what this is</p>
       <div class="card">
@@ -451,7 +452,8 @@
         <p>
           The compositions have existed for years — in notation, in memory,
           in the body — waiting for the technology to catch up with the vision.
-          It has. The fiction that inspired each album lives at
+          It has. The first album was composed and realised in 2017.
+          The fiction that inspired each album lives at
           <a href="https://deiadorebel.life" style="color:var(--accent);text-decoration:none;">deiadorebel.life</a>.
           The research that runs through all of it is at
           <a href="https://thequantumceo.com" style="color:var(--accent);text-decoration:none;">The Quantum CEO</a>.
@@ -461,44 +463,45 @@
 
     <!-- ─── music ─── -->
     <section id="music">
-      <p class="section-label">the catalogue · five albums · eight songs each</p>
+      <!-- future anchor: pending — update section label and tile statuses as albums release -->
+      <p class="section-label">the catalogue · five albums · eight songs each · one released</p>
       <div class="songs-grid">
 
-        <!-- featured album — full width -->
+        <!-- featured album — full width — the one that exists -->
         <div class="song-tile album">
-          <p class="novella">album ii · 2017 · the first release</p>
+          <p class="novella">album ii · 2017 · released</p>
           <h3>God/Goddess Algorithm and the Union of the Mirrored Self</h3>
           <p class="song-count">8 songs · original compositions · AI-assisted realisation</p>
+          <!-- future anchor: pending — add streaming/download link on release -->
           <p class="status">coming soon · email the artist ↓</p>
         </div>
 
-        <!-- remaining albums — 2x2 -->
         <div class="song-tile coming">
-          <p class="novella">album i · 2016</p>
+          <p class="novella">album i · 2016 · in composition</p>
           <h3>Light Travel and the Timelessness of Now</h3>
           <p class="song-count">8 songs</p>
-          <p class="status">coming soon</p>
+          <p class="status">becoming</p>
         </div>
 
         <div class="song-tile coming">
-          <p class="novella">album iii · 2018</p>
+          <p class="novella">album iii · 2018 · in composition</p>
           <h3>Quantum Divinity and the Separation of Two Worlds</h3>
           <p class="song-count">8 songs</p>
-          <p class="status">coming soon</p>
+          <p class="status">becoming</p>
         </div>
 
         <div class="song-tile coming">
-          <p class="novella">album iv · 2019</p>
+          <p class="novella">album iv · 2019 · in composition</p>
           <h3>The Other Me and the Life/Death of the Self</h3>
           <p class="song-count">8 songs</p>
-          <p class="status">coming soon</p>
+          <p class="status">becoming</p>
         </div>
 
         <div class="song-tile coming">
           <p class="novella">album v · in progress</p>
           <h3>Rebel Evolve and the Return Home</h3>
           <p class="song-count">8 songs</p>
-          <p class="status">coming soon</p>
+          <p class="status">becoming</p>
         </div>
 
       </div>
@@ -524,17 +527,48 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    const toggle = document.getElementById("themeToggle");
-    const saved = localStorage.getItem("theme-deiadorebel") || "dark";
-    document.documentElement.setAttribute("data-theme", saved);
-    toggle.textContent = saved === "dark" ? "🌙" : "☀️";
 
+    const toggle  = document.getElementById("themeToggle");
+    const root    = document.documentElement;
+    const STORE   = "qc-theme"; // shared key across all ecosystem sites
+
+    // Detect system preference
+    const sysDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function resolveTheme() {
+      const saved = localStorage.getItem(STORE);
+      if (saved) return saved;                     // explicit user override
+      return sysDark.matches ? "dark" : "light";   // follow system
+    }
+
+    function applyTheme(theme) {
+      root.setAttribute("data-theme", theme);
+      toggle.textContent = theme === "dark" ? "🌙" : "☀️";
+      toggle.setAttribute("aria-label", theme === "dark" ? "switch to light mode" : "switch to dark mode");
+    }
+
+    // Initial paint
+    applyTheme(resolveTheme());
+
+    // Toggle click — cycle: override opposite → clear override (return to system)
     toggle.addEventListener("click", () => {
-      const current = document.documentElement.getAttribute("data-theme");
+      const current = root.getAttribute("data-theme");
+      const sysTheme = sysDark.matches ? "dark" : "light";
       const next = current === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
-      localStorage.setItem("theme-deiadorebel", next);
-      toggle.textContent = next === "dark" ? "🌙" : "☀️";
+
+      if (next === sysTheme) {
+        localStorage.removeItem(STORE);
+      } else {
+        localStorage.setItem(STORE, next);
+      }
+      applyTheme(next);
+    });
+
+    // Follow OS schedule changes if no manual override is set
+    sysDark.addEventListener("change", () => {
+      if (!localStorage.getItem(STORE)) {
+        applyTheme(sysDark.matches ? "dark" : "light");
+      }
     });
   </script>
 </body>
