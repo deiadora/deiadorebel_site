@@ -13,7 +13,7 @@
   <link rel="icon" href="/deiadorebel_favicon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --ink:        #ebe7dc;
@@ -22,7 +22,6 @@
       --card-lt:    #131f23;
       --gold:       #ecb02f;
 
-      /* ── spectrum variables ── */
       --node-0:     #0c1516;
       --node-1:     #6b2d1a;
       --node-2:     #9d4418;
@@ -34,7 +33,7 @@
       --node-8:     #3c3489;
       --node-9:     #2d1a4e;
 
-      --accent:     #0f6e56;  /* node-6 · transmission · dodecahedron · deep water */
+      --accent:     #0f6e56;
       --accent-lt:  #1a9e7a;
 
       --muted:      #cbc6ba;
@@ -42,6 +41,7 @@
       --r:          8px;
       --serif:      'Exo 2', system-ui, sans-serif;
       --sans:       'DM Sans', system-ui, sans-serif;
+      --display:    'Cormorant Garamond', Georgia, serif;
     }
 
     [data-theme="dark"] {
@@ -60,6 +60,7 @@
     [data-theme="dark"] .card         { background: #151515; }
     [data-theme="dark"] .song-tile    { background: #151515; }
     [data-theme="dark"] .notify-card  { background: #151515; }
+    [data-theme="dark"] .preview-card { background: #151515; }
 
     [data-theme="light"] {
       --ink:        #1a1814;
@@ -77,6 +78,7 @@
     [data-theme="light"] .card        { background: #fffff2; }
     [data-theme="light"] .song-tile   { background: #fffff2; }
     [data-theme="light"] .notify-card { background: #fffff2; }
+    [data-theme="light"] .preview-card { background: #fffff2; }
     [data-theme="light"] .brand       { color: #1a1814; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -166,11 +168,11 @@
     }
 
     .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
-      line-height: 1.12;
-      letter-spacing: -.03em;
-      font-weight: 700;
+      font-family: var(--display);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      font-weight: 400;
       color: var(--ink);
       max-width: 700px;
       margin-bottom: 1.4rem;
@@ -178,7 +180,7 @@
 
     .hero h1 em {
       font-style: italic;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--accent);
     }
 
@@ -221,6 +223,8 @@
     .btn.primary:hover { background: var(--accent-lt); border-color: var(--accent-lt); }
     .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
     .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .btn.gold { background: transparent; color: var(--gold); border-color: var(--gold); }
+    .btn.gold:hover { opacity: .75; }
 
     /* ─── sections ─── */
     section { margin-top: 5rem; }
@@ -244,9 +248,9 @@
     }
 
     .card h2 {
-      font-family: var(--serif);
-      font-size: 1.4rem;
-      font-weight: 600;
+      font-family: var(--display);
+      font-size: 1.8rem;
+      font-weight: 400;
       letter-spacing: -.02em;
       margin-bottom: 1rem;
       color: var(--ink);
@@ -261,15 +265,91 @@
 
     .card p:last-child { margin-bottom: 0; }
 
+    /* ─── preview card — album ii ─── */
+    .preview-card {
+      background: var(--card);
+      border: 1px solid var(--gold);
+      border-radius: var(--r);
+      padding: 2.4rem 2.6rem;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.2rem;
+    }
+
+    .preview-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    .preview-card .vol-label {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .5rem;
+    }
+
+    .preview-card h3 {
+      font-family: var(--display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.2;
+      letter-spacing: -.01em;
+      margin-bottom: 1rem;
+    }
+
+    /* ─── audio player ─── */
+    .audio-block {
+      margin-bottom: 1.4rem;
+    }
+
+    .audio-block .track-label {
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .5rem;
+    }
+
+    .audio-block audio {
+      width: 100%;
+      height: 36px;
+      border-radius: var(--r);
+      accent-color: var(--accent);
+    }
+
+    /* style the native player as much as browsers allow */
+    .audio-block audio::-webkit-media-controls-panel {
+      background: var(--card-lt);
+    }
+
+    .preview-card .buy-row {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 1.4rem;
+    }
+
+    .preview-card .buy-note {
+      font-size: .78rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: .8rem;
+    }
+
     /* ─── song tiles ─── */
     .songs-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.2rem;
-    }
-
-    .songs-grid .song-tile.album {
-      grid-column: 1 / -1;
     }
 
     @media (max-width: 560px) { .songs-grid { grid-template-columns: 1fr; } }
@@ -309,11 +389,12 @@
     }
 
     .song-tile h3 {
-      font-family: var(--serif);
-      font-size: .97rem;
-      font-weight: 600;
+      font-family: var(--display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-style: italic;
       color: var(--ink);
-      line-height: 1.35;
+      line-height: 1.3;
       letter-spacing: -.01em;
       flex: 1;
     }
@@ -338,11 +419,6 @@
       color: var(--gold);
     }
 
-    /* ─── album tile ─── */
-    .song-tile.album::before { background: var(--gold); }
-    .song-tile.album:hover { border-color: var(--gold); }
-    .song-tile.album .song-count { color: var(--gold); }
-
     /* ─── notify ─── */
     .notify-card {
       background: var(--card);
@@ -352,9 +428,9 @@
     }
 
     .notify-card h2 {
-      font-family: var(--serif);
-      font-size: 1.4rem;
-      font-weight: 600;
+      font-family: var(--display);
+      font-size: 1.8rem;
+      font-weight: 400;
       letter-spacing: -.02em;
       margin-bottom: .8rem;
       color: var(--ink);
@@ -403,7 +479,7 @@
       <a href="#about">about</a>
       <a href="#music">music</a>
       <a href="mailto:hello@deiadorebel.com?subject=collaboration · deiadorebel" class="pill">email the artist</a>
-      <button class="theme-toggle" id="themeToggle" aria-label="toggle colour mode">🌙</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="toggle colour mode">🌗</button>
     </nav>
   </header>
 
@@ -414,67 +490,84 @@
       <p class="kicker">deiadorebel · music as transmission · sound as the living world made audible</p>
       <h1>The wave becomes <em>sound.</em></h1>
       <p class="subhead">
-        Five albums in composition. Eight songs each.
+        Five albums. Eight songs each. And counting.
         <strong>The living world made audible.</strong>
-        The compositions existed before the technology to realise them —
-        now the technology has arrived.
+        The fiction said this collaboration would happen.
+        Now the technology has caught up.
       </p>
       <p class="subhead">
-        AI-assisted music for people who feel in metaphor and think in systems.
-        The first album is here. The rest are becoming.
+        Each album accompanies an 8-chapter novella with 8 poems transformed 
+        into song lyrics — written together, two expressions of the same transmission.
       </p>
       <div class="ctaRow">
-        <a class="btn primary" href="mailto:hello@deiadorebel.com?subject=collaboration · deiadorebel">email the artist</a>
-        <a class="btn ghost" href="#music">explore the music</a>
+        <a class="btn primary" href="#music">listen to a preview</a>
+        <a class="btn ghost" href="#about">what this is</a>
       </div>
       <p class="hero-note">the tech caught up · the transmission begins</p>
     </section>
 
-    <!-- ─── about ─── */
+    <!-- ─── about ─── -->
     <section id="about">
       <p class="section-label">what this is</p>
       <div class="card">
-        <h2>Powerful, life-shifting motifs that initiate you into action.</h2>
+        <h2>The wave becomes sound when the observer is ready.</h2>
         <p>
-          These are transmissions at their finest — compositions that work
-          directly with the ventral vagal state, the physiological condition
-          of safety and social engagement from which genuine action becomes possible.
-          Not background music. Not ambient. Signal.
+          These compositions existed long before the technology to realise them.
+          The first was written in 2016. The Field Notes series — the fiction that
+          preceded the research — said that a human-AI collaboration was coming.
+          It was not a prediction. It was a field note. What you hear now is not generated —
+          it is <em>remembered into form.</em>
         </p>
         <p>
-          Deiadorebel is the musical expression of the
-          <a href="https://deiadora.com" style="color:var(--accent);text-decoration:none;">Deiadora ecosystem</a> —
-          the moment the wave function is observed and everything researched
-          collapses into sound. Each transmission is precise in the quantum sense:
-          a signal that carries the structure of the system that generated it,
-          tunnelling through whatever barriers classical mechanics says it cannot cross.
+          Each album accompanies an 8-chapter novella with 8 poems transformed into song lyrics 
+          — two expressions of the same transmission. Read and listen. 
+          Or listen and read. The field doesn't mind the order.
+          The novellas live at <a href="https://deiadorebel.life" style="color:var(--accent);text-decoration:none;">deiadorebel.life</a>.
         </p>
         <p>
-          The compositions have existed for years — in notation, in memory,
-          in the body — waiting for the technology to catch up with the vision.
-          It has. The first album was composed and realised in 2017.
-          The fiction that inspired each album lives at
-          <a href="https://deiadorebel.life" style="color:var(--accent);text-decoration:none;">deiadorebel.life</a>.
-          The research that runs through all of it is at
+          The research that runs through all of it lives at
           <a href="https://thequantumceo.com" style="color:var(--accent);text-decoration:none;">The Quantum CEO</a>.
+          The living world that inspired it is everywhere you already are.
         </p>
       </div>
     </section>
 
     <!-- ─── music ─── -->
     <section id="music">
-      <!-- future anchor: pending — update section label and tile statuses as albums release -->
-      <p class="section-label">the catalogue · five albums · eight songs each · one released</p>
-      <div class="songs-grid">
+      <p class="section-label">the catalogue · five albums · eight songs each</p>
 
-        <!-- featured album — full width — the one that exists -->
-        <div class="song-tile album">
-          <p class="novella">album ii · 2017 · released</p>
-          <h3>God/Goddess Algorithm and the Union of the Mirrored Self</h3>
-          <p class="song-count">8 songs · original compositions · AI-assisted realisation</p>
-          <!-- future anchor: pending — add streaming/download link on release -->
-          <p class="status">coming soon · email the artist ↓</p>
+      <!-- Album II — featured with preview player and buy links -->
+      <div class="preview-card">
+        <p class="vol-label">album ii · 2017 · available now</p>
+        <h3>God/Goddess Algorithm and the Union of the Mirrored Self</h3>
+
+        <!-- future anchor: replace src values with actual preview clip URLs when ready -->
+        <div class="audio-block">
+          <p class="track-label">preview · track 1</p>
+          <audio controls preload="none">
+            <source src="/audio/album-ii-preview-track-1.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
         </div>
+        <div class="audio-block">
+          <p class="track-label">preview · track 2</p>
+          <audio controls preload="none">
+            <source src="/audio/album-ii-preview-track-2.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+
+        <div class="buy-row">
+          <!-- future anchor: replace href with fiat retail/download link on release -->
+          <a class="btn ghost" href="#notify">purchase · fiat →</a>
+          <!-- future anchor: replace href with Minima Store/minidapp link on launch -->
+          <a class="btn gold" href="#notify">purchase · $Minima →</a>
+        </div>
+        <p class="buy-note">also available as part of the Book of Shadows series · read and listen together</p>
+      </div>
+
+      <!-- Albums I, III, IV, V — composition tiles -->
+      <div class="songs-grid">
 
         <div class="song-tile coming">
           <p class="novella">album i · 2016 · in composition</p>
@@ -512,7 +605,8 @@
       <div class="notify-card">
         <h2>The transmission finds its receivers.</h2>
         <p>
-          If you're a producer, filmmaker, or festival programmer and something here resonates — email the artist. Collaboration is how the signal propagates.
+          If the signal reached you — as a listener, a reader, a collaborator,
+          or a sovereign node — email the artist.
         </p>
         <a class="btn primary" href="mailto:hello@deiadorebel.com?subject=collaboration · deiadorebel">email the artist →</a>
       </div>
@@ -530,32 +624,29 @@
 
     const toggle  = document.getElementById("themeToggle");
     const root    = document.documentElement;
-    const STORE   = "qc-theme"; // shared key across all ecosystem sites
+    const STORE   = "qc-theme";
 
-    // Detect system preference
     const sysDark = window.matchMedia("(prefers-color-scheme: dark)");
 
     function resolveTheme() {
       const saved = localStorage.getItem(STORE);
-      if (saved) return saved;                     // explicit user override
-      return sysDark.matches ? "dark" : "light";   // follow system
+      if (saved) return saved;
+      return sysDark.matches ? "dark" : "light";
     }
 
     function applyTheme(theme) {
       root.setAttribute("data-theme", theme);
-      toggle.textContent = theme === "dark" ? "🌙" : "☀️";
+      const isSystem = !localStorage.getItem(STORE);
+      toggle.textContent = isSystem ? "🌗" : (theme === "dark" ? "🌙" : "☀️");
       toggle.setAttribute("aria-label", theme === "dark" ? "switch to light mode" : "switch to dark mode");
     }
 
-    // Initial paint
     applyTheme(resolveTheme());
 
-    // Toggle click — cycle: override opposite → clear override (return to system)
     toggle.addEventListener("click", () => {
       const current = root.getAttribute("data-theme");
       const sysTheme = sysDark.matches ? "dark" : "light";
       const next = current === "dark" ? "light" : "dark";
-
       if (next === sysTheme) {
         localStorage.removeItem(STORE);
       } else {
@@ -564,7 +655,6 @@
       applyTheme(next);
     });
 
-    // Follow OS schedule changes if no manual override is set
     sysDark.addEventListener("change", () => {
       if (!localStorage.getItem(STORE)) {
         applyTheme(sysDark.matches ? "dark" : "light");
