@@ -2,7 +2,7 @@
  
 Twelve faces. Signal broadcast through space. Home of the deiadorebel
 music catalogue — five albums, eight songs each. Dimension 6 of
-The Currency Workshop.
+The Currency Playbook workshop.
 
 ## part of the deiadora ecosystem
  
